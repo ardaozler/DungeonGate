@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private int _maxAttackSteps;
-    private List<MagicStep> _attackSteps = new List<MagicStep>();
+    private List<AttackStep> _attackSteps = new List<AttackStep>();
 
     [SerializeField] private float _attackButtonHoldTime = .5f;
     [SerializeField] private List<AttackBlueprint> _attackBlueprints;
@@ -71,17 +72,17 @@ public class PlayerAttack : MonoBehaviour
 
     private void AddAttackStep(Color color)
     {
-        _attackSteps.Add(new MagicStep(color));
+        _attackSteps.Add(new AttackStep(color));
         AddedNewColor.Invoke(color);
     }
 }
 
 [System.Serializable]
-public class MagicStep
+public class AttackStep
 {
     public Color color;
 
-    public MagicStep(Color color)
+    public AttackStep(Color color)
     {
         this.color = color;
     }
@@ -90,31 +91,31 @@ public class MagicStep
 [System.Serializable]
 public class AttackBlueprint
 {
-    public List<MagicStep> MagicSteps;
+    [FormerlySerializedAs("MagicSteps")] public List<AttackStep> AttackSteps;
 
     public GameObject AttackPrefab;
 
-    public AttackBlueprint(List<MagicStep> magicSteps, GameObject attackPrefab)
+    public AttackBlueprint(List<AttackStep> attackSteps, GameObject attackPrefab)
     {
-        MagicSteps = magicSteps;
+        AttackSteps = attackSteps;
         AttackPrefab = attackPrefab;
     }
 
     public bool CompareTo(AttackBlueprint other)
     {
-        return CompareTo(other.MagicSteps) && other.AttackPrefab == AttackPrefab;
+        return CompareTo(other.AttackSteps) && other.AttackPrefab == AttackPrefab;
     }
 
-    public bool CompareTo(List<MagicStep> other)
+    public bool CompareTo(List<AttackStep> other)
     {
         bool result = false;
 
-        if (this.MagicSteps.Count == other.Count)
+        if (this.AttackSteps.Count == other.Count)
         {
             result = true;
-            for (int i = 0; i < this.MagicSteps.Count; i++)
+            for (int i = 0; i < this.AttackSteps.Count; i++)
             {
-                if (this.MagicSteps[i].color != other[i].color)
+                if (this.AttackSteps[i].color != other[i].color)
                 {
                     result = false;
                     break;

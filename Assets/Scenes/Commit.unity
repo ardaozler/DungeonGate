@@ -10547,6 +10547,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1462234079982074637, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: coyoteTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462234079982074637, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462234079982074637, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: jumpTopDelay
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
       propertyPath: _attackBlueprints.Array.size
@@ -10616,17 +10631,17 @@ PrefabInstance:
     - target: {fileID: 3426652236521617277, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.83
       objectReference: {fileID: 0}
     - target: {fileID: 3426652236521617277, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.76
+      value: 1.47
       objectReference: {fileID: 0}
     - target: {fileID: 3426652236521617277, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 8.11
       objectReference: {fileID: 0}
     - target: {fileID: 3426652236521617277, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}

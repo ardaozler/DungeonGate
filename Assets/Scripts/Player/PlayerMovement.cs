@@ -128,7 +128,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (!_isGrounded && _hasJumped)
         {
-            if ((int)Mathf.Sign(_downwardVelocity.y) != (int)Mathf.Sign(_lastDownwardVelocity.y))
+            if (((int)Mathf.Sign(_lastDownwardVelocity.y) == 1 && (int)Mathf.Sign(_downwardVelocity.y) == -1) ||
+                ((int)Mathf.Sign(_lastDownwardVelocity.y) == 0 && (int)Mathf.Sign(_downwardVelocity.y) == -1) ||
+                ((int)Mathf.Sign(_lastDownwardVelocity.y) == 1 && (int)Mathf.Sign(_downwardVelocity.y) == 0))
             {
                 _hasJumped = false;
                 if (_jumpTopTimer == 0)
