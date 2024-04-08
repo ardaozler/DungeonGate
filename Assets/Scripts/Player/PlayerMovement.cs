@@ -124,8 +124,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        Debug.Log(_controller.velocity);
-
         if (!_isGrounded && _hasJumped)
         {
             if (((int)Mathf.Sign(_lastDownwardVelocity.y) == 1 && (int)Mathf.Sign(_downwardVelocity.y) == -1) ||

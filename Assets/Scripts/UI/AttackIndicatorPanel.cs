@@ -11,8 +11,8 @@ public class AttackIndicatorPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerAttack.AddedNewColor.AddListener(OnAddedNewColor);
-        PlayerAttack.ClearAttack.AddListener(OnClearAttack);
+        PlayerSkill.AddedNewColor.AddListener(OnAddedNewColor);
+        PlayerSkill.ClearAttack.AddListener(OnClearAttack);
     }
 
     private void OnAddedNewColor(Color color)

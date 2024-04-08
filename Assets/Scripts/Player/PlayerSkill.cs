@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerAttack : MonoBehaviour
+public class PlayerSkill : MonoBehaviour
 {
     [SerializeField] private int _maxAttackSteps;
     private List<SkillStep> _skillSteps = new List<SkillStep>();
@@ -20,6 +20,9 @@ public class PlayerAttack : MonoBehaviour
 
 
     [SerializeField] private Transform _firePoint;
+
+
+    [SerializeField] private LayerMask _blinkCheckLayerMask;
 
 
     private float _attackButtonHoldTimer = 0f;
@@ -120,11 +123,11 @@ public class PlayerAttack : MonoBehaviour
             switch (mobilitySkillBlueprint.movementType)
             {
                 case MobilitySkillBlueprint.MovementType.Dash:
-                    StartCoroutine(Dash(Camera.main.transform.forward, mobilitySkillBlueprint.completionTime,
+                    StartCoroutine(Dash(towards, mobilitySkillBlueprint.completionTime,
                         mobilitySkillBlueprint.dashSpeed));
                     break;
                 case MobilitySkillBlueprint.MovementType.Blink:
-                    
+                    Blink(towards, mobilitySkillBlueprint.maxBlinkDistance);
                     break;
             }
         });
@@ -140,6 +143,28 @@ public class PlayerAttack : MonoBehaviour
             yield return null;
         }
     }
-    
-    private void Blink()
+
+    private void Blink(Vector3 towards, float maxDistance)
+    {
+        //disable the controller so it doesnt override the transform position set 
+        _controller.enabled = false;
+        if (!Physics.Raycast(transform.position, towards, out RaycastHit hit, maxDistance, _blinkCheckLayerMask))
+        {
+            //raycast returned false so player is free to blink max distance
+            transform.position += towards * maxDistance;
+        }
+        else
+        {
+            //raycast returned true so player is not free to blink max distance
+            transform.position += towards * (hit.distance - 1);
+        }
+
+        _controller.enabled = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawRay(transform.position, Camera.main.transform.forward * 10);
+    }
 }
