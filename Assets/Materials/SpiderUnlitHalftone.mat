@@ -114,7 +114,7 @@ Material:
     - _Rotation: 45
     - _SampleGI: 0
     - _Shades: 0.36
-    - _ShadingMultipler: 5.2
+    - _ShadingMultipler: 33.76
     - _ShadingMultiplier: 0.1
     - _Shininess: 0
     - _Smoothness: 0.5
@@ -128,10 +128,10 @@ Material:
     - _USE_SCREEN_SPACE: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.7924528, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 0.3962264, g: 0.22614808, b: 0.26471648, a: 1}
     - _CellColor: {r: 0.3207547, g: 0.21030615, b: 0.21030615, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 0.43137255}
-    - _DotsColor: {r: 0.8679245, g: 0.39711642, b: 0.39711642, a: 1}
+    - _DotsColor: {r: 0.7296757, g: 0.8784314, b: 0.5254902, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
