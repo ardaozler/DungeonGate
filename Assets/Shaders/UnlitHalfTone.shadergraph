@@ -4013,7 +4013,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AngleOffset",
     "m_StageCapability": 3,
-    "m_Value": 10.930000305175782,
+    "m_Value": 0.0,
     "m_DefaultValue": 2.0,
     "m_Labels": []
 }
