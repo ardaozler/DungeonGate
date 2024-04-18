@@ -32,6 +32,14 @@ public class PlayerSkill : MonoBehaviour
 
     private CharacterController _controller;
 
+    //filling the skill steps
+    private bool _isUsingRightSkill;
+    private bool _isUsingLeftSkill;
+
+    //attacking
+    private bool _isLeftShooting;
+    private bool _isRightShooting;
+
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
@@ -43,15 +51,36 @@ public class PlayerSkill : MonoBehaviour
 
         if (_skillSteps.Count < _maxAttackSteps)
         {
-            if (Input.GetMouseButtonDown(1))
-            {
-                AddSkillStep(Color.red);
-            }
-
             if (Input.GetMouseButtonDown(0))
             {
                 AddSkillStep(Color.blue);
+                _isUsingLeftSkill = true;
             }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                _isUsingLeftSkill = false;
+                _isLeftShooting = false;
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                AddSkillStep(Color.red);
+                _isUsingRightSkill = true;
+            }
+
+            if (Input.GetMouseButtonUp(1))
+            {
+                _isUsingRightSkill = false;
+                _isRightShooting = false;
+            }
+        }
+        else
+        {
+            _isUsingLeftSkill = false;
+            _isLeftShooting = false;
+            _isUsingRightSkill = false;
+            _isRightShooting = false;
         }
     }
 
@@ -102,6 +131,15 @@ public class PlayerSkill : MonoBehaviour
 
     private void UseAttackSkill(AttackSkillBlueprint attackSkillBlueprint)
     {
+        if (attackSkillBlueprint.SkillSteps[^1].color == Color.blue)
+        {
+            _isLeftShooting = true;
+        }
+        else
+        {
+            _isRightShooting = true;
+        }
+
         Instantiate(attackSkillBlueprint.AttackPrefab, _firePoint.position, _firePoint.rotation);
     }
 
@@ -160,6 +198,32 @@ public class PlayerSkill : MonoBehaviour
         }
 
         _controller.enabled = true;
+    }
+
+    public bool IsUsingRightSkill()
+    {
+        return _isUsingRightSkill;
+    }
+
+    public bool IsUsingLeftSkill()
+    {
+        return _isUsingLeftSkill;
+    }
+
+    public bool IsRightShooting()
+    {
+        return _isRightShooting;
+    }
+
+    public bool IsLeftShooting()
+    {
+        return _isLeftShooting;
+    }
+
+
+    public int CurrentSkillStepCount()
+    {
+        return _skillSteps.Count;
     }
 
     private void OnDrawGizmos()

@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -35,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _lastPosition = new Vector3(0f, 0f, 0f);
 
     private bool _hasJumped;
+
 
     void Awake()
     {
@@ -153,6 +152,11 @@ public class PlayerMovement : MonoBehaviour
 
         _controller.Move(_downwardVelocity * Time.deltaTime);
         return;
+    }
+
+    public bool IsMoving()
+    {
+        return _isMoving;
     }
 
 
