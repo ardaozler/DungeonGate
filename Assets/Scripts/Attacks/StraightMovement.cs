@@ -3,6 +3,7 @@ using UnityEngine;
 public class StraightMovement : MonoBehaviour
 {
     private Rigidbody _rb;
+    public int speed = 20;
 
     private void Awake()
     {
@@ -11,6 +12,6 @@ public class StraightMovement : MonoBehaviour
 
     private void Start()
     {
-        _rb.velocity = transform.forward * 20;
+        _rb.velocity = transform.forward * speed;
     }
 }
