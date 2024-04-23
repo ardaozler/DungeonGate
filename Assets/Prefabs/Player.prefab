@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 2493725886840812323}
   - component: {fileID: 1462234079982074637}
   - component: {fileID: 2272546813464177524}
+  - component: {fileID: 8544383227565332896}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -129,11 +130,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b8e494d25af86c4f9867e3496bdd6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _indicatorPrefab: {fileID: 3182071952636906838, guid: 7f0d0c0665ab519439597e05dd6fa6f4,
-    type: 3}
   _maxAttackSteps: 3
   _attackButtonHoldTime: 0.5
+  _attackBlueprints: []
+  _mobilitySkillBlueprints: []
   _firePoint: {fileID: 2849435728944204746}
+  _blinkCheckLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &8544383227565332896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4322036034706973672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5556896fd3fc6d4babe42173b63d571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leftHandAnimator: {fileID: 0}
+  _rightHandAnimator: {fileID: 0}
 --- !u!1 &6031390985954950818
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class MobilitySkillBlueprint
 {
     public List<SkillStep> skillSteps;
+
+
+    public string skillId;
 
     [Tooltip("The time in seconds it takes to channel the skill")]
     public float channelTime;
@@ -36,6 +40,12 @@ public class MobilitySkillBlueprint
     {
         Mouse,
         Keyboard
+    }
+
+    public MobilitySkillBlueprint(List<SkillStep> skillSteps)
+    {
+        this.skillSteps = skillSteps;
+        skillId = PlayerSkill.GetSkillId(skillSteps);
     }
 
     public bool CompareTo(List<SkillStep> other)

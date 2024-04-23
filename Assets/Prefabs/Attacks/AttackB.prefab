@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2982694381373962924}
   - component: {fileID: 3681876504905580691}
   m_Layer: 0
-  m_Name: Attack1
+  m_Name: AttackB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc07a5e8625ac004f987ad07a65695a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 20
 --- !u!136 &3681876504905580691
 CapsuleCollider:
   m_ObjectHideFlags: 0
