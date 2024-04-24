@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -6,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController), typeof(HandsAnimator))]
 public class PlayerSkill : MonoBehaviour
 {
     [SerializeField] private int _maxAttackSteps;
@@ -31,10 +30,38 @@ public class PlayerSkill : MonoBehaviour
     public static UnityEvent ClearAttack = new UnityEvent();
 
     private CharacterController _controller;
+    private HandsAnimator _handsAnimator;
+    
+    //attacking
+    private string _currentSkillId = "";
+    private bool _isLeftShooting;
+    private bool _isRightShooting;
+
+    private void OnEnable()
+    {
+        RightHandAnimationEventRelayer.SkillShootAnimEventRelay += Shoot;
+        LeftHandAnimationEventRelayer.SkillShootAnimEventRelay += Shoot;
+    }
+
+    private void OnDisable()
+    {
+        RightHandAnimationEventRelayer.SkillShootAnimEventRelay -= Shoot;
+        LeftHandAnimationEventRelayer.SkillShootAnimEventRelay -= Shoot;
+    }
+
+    private void Shoot()
+    {
+        // shoot trigger has been triggered
+        UseSkill(_currentSkillId);
+        //find a way to differentiate between one shot skills and hold skills so we know when to start the reverse anim 
+
+        //_isShootAnimEventTriggered = true;
+    }
 
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
+        _handsAnimator = GetComponent<HandsAnimator>();
     }
 
     private void Update()
@@ -43,15 +70,30 @@ public class PlayerSkill : MonoBehaviour
 
         if (_skillSteps.Count < _maxAttackSteps)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                AddSkillStep(Color.blue);
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                SetIsLeftShooting(false);
+            }
+
             if (Input.GetMouseButtonDown(1))
             {
                 AddSkillStep(Color.red);
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(1))
             {
-                AddSkillStep(Color.blue);
+                SetIsRightShooting(false);
             }
+        }
+        else
+        {
+            SetIsLeftShooting(false);
+            SetIsRightShooting(false);
         }
     }
 
@@ -60,16 +102,25 @@ public class PlayerSkill : MonoBehaviour
         //if one of the mouse buttons is held down for more than _attackButtonHoldTime 
         if ((Input.GetMouseButton(1) || Input.GetMouseButton(0)) && _skillSteps.Count > 0)
         {
+            _currentSkillId = GetSkillId(_skillSteps);
+
             _attackButtonHoldTimer += Time.deltaTime;
             if (_attackButtonHoldTimer >= _attackButtonHoldTime)
             {
+                if (_skillSteps[^1].color == Color.blue)
+                {
+                    SetIsLeftShooting(true);
+                }
+                else
+                {
+                    SetIsRightShooting(true);
+                }
+
                 //check if any of the attack blueprints matches the magic steps
                 foreach (var attackBlueprint in _attackBlueprints)
                 {
                     if (attackBlueprint.CompareTo(_skillSteps))
                     {
-                        //if they match, instantiate the attack, and clear the steps, return
-                        UseAttackSkill(attackBlueprint);
                         break;
                     }
                 }
@@ -78,10 +129,10 @@ public class PlayerSkill : MonoBehaviour
                 {
                     if (mobilitySkillBlueprint.CompareTo(_skillSteps))
                     {
-                        UseMobilitySkill(mobilitySkillBlueprint);
                         break;
                     }
                 }
+
 
                 //if they don't match, just clear the steps
                 _skillSteps.Clear();
@@ -98,6 +149,23 @@ public class PlayerSkill : MonoBehaviour
     {
         _skillSteps.Add(new SkillStep(color));
         AddedNewColor.Invoke(color);
+    }
+
+    private void UseSkill(string skillId)
+    {
+        //TODO: OPTIMIZE this poo poo
+        //find the blueprint
+        var attackBlueprint = _attackBlueprints.Find(x => x.skillId == skillId);
+        var mobilitySkillBlueprint = _mobilitySkillBlueprints.Find(x => x.skillId == skillId);
+        if (attackBlueprint != null)
+        {
+            UseAttackSkill(attackBlueprint);
+        }
+
+        if (mobilitySkillBlueprint != null)
+        {
+            UseMobilitySkill(mobilitySkillBlueprint);
+        }
     }
 
     private void UseAttackSkill(AttackSkillBlueprint attackSkillBlueprint)
@@ -160,6 +228,65 @@ public class PlayerSkill : MonoBehaviour
         }
 
         _controller.enabled = true;
+    }
+
+    private void SetIsRightShooting(bool value)
+    {
+        //only if the value is changing from false to true set the skillStart
+        if (value != _isRightShooting && value)
+        {
+            _handsAnimator.SetRightHandTrigger("SkillStart");
+        }
+
+        _isRightShooting = value;
+        _handsAnimator.SetRightHandBool(_currentSkillId, value);
+    }
+
+    public bool IsRightHoldingDown()
+    {
+        return _isRightShooting;
+    }
+
+    private void SetIsLeftShooting(bool value)
+    {
+        if (value != _isLeftShooting && value)
+        {
+            _handsAnimator.SetLeftHandTrigger("SkillStart");
+            _handsAnimator.SetLeftHandTrigger(_currentSkillId);
+        }
+
+        _isLeftShooting = value;
+    }
+
+    public bool IsLeftHoldingDown()
+    {
+        return _isLeftShooting;
+    }
+
+
+    public int CurrentSkillStepCount()
+    {
+        return _skillSteps.Count;
+    }
+
+
+    public static string GetSkillId(List<SkillStep> skillSteps)
+    {
+        string skillId = "";
+        //TODO: Change after demo to be red r blue b green g
+        for (int i = 0; i < skillSteps.Count; i++)
+        {
+            if (skillSteps[i].color == Color.red)
+            {
+                skillId += "R";
+            }
+            else
+            {
+                skillId += "B";
+            }
+        }
+
+        return skillId;
     }
 
     private void OnDrawGizmos()

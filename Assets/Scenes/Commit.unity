@@ -385,6 +385,7 @@ RectTransform:
   m_Children:
   - {fileID: 1917124065}
   - {fileID: 1691806992}
+  - {fileID: 760077414}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4380,6 +4381,116 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8419ae74331b7e244986a3788edb7d65, type: 3}
+--- !u!1 &760077413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 760077414}
+  - component: {fileID: 760077417}
+  - component: {fileID: 760077416}
+  - component: {fileID: 760077415}
+  - component: {fileID: 760077418}
+  m_Layer: 5
+  m_Name: HandLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &760077414
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760077413}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 53260202}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -389, y: -223}
+  m_SizeDelta: {x: -765.9835, y: -430.8657}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &760077415
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760077413}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5618378c36684f468edfaaa5be1849a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &760077416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760077413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.56924176, g: 0.57129675, b: 0.9811321, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fab32c3e17b38974a8adb87a9e855268, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &760077417
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760077413}
+  m_CullTransparentMesh: 0
+--- !u!114 &760077418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760077413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef59bccca26d96443bb64e0341f70597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &763309953
 GameObject:
   m_ObjectHideFlags: 0
@@ -13722,6 +13833,7 @@ GameObject:
   - component: {fileID: 1691806995}
   - component: {fileID: 1691806994}
   - component: {fileID: 1691806993}
+  - component: {fileID: 1691806996}
   m_Layer: 5
   m_Name: HandRight
   m_TagString: Untagged
@@ -13745,7 +13857,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 382.9917, y: -215.43286}
+  m_AnchoredPosition: {x: 382.9917, y: -223}
   m_SizeDelta: {x: -765.9835, y: -430.8657}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1691806993
@@ -13758,7 +13870,7 @@ Animator:
   m_GameObject: {fileID: 1691806991}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b29679fd432f60b47b72d1ecb098b8b8, type: 2}
+  m_Controller: {fileID: 9100000, guid: e2a90f8f7774ab3418a77f5d96b16880, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13782,14 +13894,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.60784316, b: 0.62351894, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8144757e6aafa294ab738d3541c3077c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fab32c3e17b38974a8adb87a9e855268, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13807,6 +13919,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691806991}
   m_CullTransparentMesh: 0
+--- !u!114 &1691806996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691806991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534d391bd5b98e24ea296ed68082c3c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1840029752
 GameObject:
   m_ObjectHideFlags: 0
@@ -14345,6 +14469,21 @@ PrefabInstance:
       propertyPath: jumpTopDelay
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1462234079982074637, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _handAnimator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _handAnimator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _handsAnimator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
       propertyPath: _blinkCheckLayerMask.m_Bits
@@ -14353,12 +14492,42 @@ PrefabInstance:
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
       propertyPath: _attackBlueprints.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
       propertyPath: _mobilitySkillBlueprints.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[0].oneShot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[0].skillId
+      value: B
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[1].oneShot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[1].skillId
+      value: BB
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[2].oneShot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[2].skillId
+      value: RB
       objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
@@ -14375,17 +14544,43 @@ PrefabInstance:
         type: 3}
       propertyPath: _attackBlueprints.Array.data[1].AttackPrefab
       value: 
-      objectReference: {fileID: 875056448425461837, guid: db48bf6c3ed38b643ae117834c7f675d,
+      objectReference: {fileID: 875056448425461837, guid: d07154c388c0d9a49b6b195beae60cc5,
         type: 3}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
+      propertyPath: _attackBlueprints.Array.data[2].AttackPrefab
+      value: 
+      objectReference: {fileID: 875056448425461837, guid: 5155d215f86f18e4783fac2d9163a5af,
+        type: 3}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _mobilitySkillBlueprints.Array.data[0].oneShot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _mobilitySkillBlueprints.Array.data[0].skillId
+      value: R
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _mobilitySkillBlueprints.Array.data[1].oneShot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _mobilitySkillBlueprints.Array.data[1].skillId
+      value: RB
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
       propertyPath: _mobilitySkillBlueprints.Array.data[0].dashSpeed
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
       propertyPath: _mobilitySkillBlueprints.Array.data[1].dashSpeed
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
@@ -14400,7 +14595,7 @@ PrefabInstance:
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
       propertyPath: _mobilitySkillBlueprints.Array.data[1].movementType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
@@ -14414,8 +14609,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
+      propertyPath: _attackBlueprints.Array.data[0].skillSteps.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
       propertyPath: _attackBlueprints.Array.data[1].SkillSteps.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[1].skillSteps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[2].skillSteps.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
@@ -14430,7 +14640,7 @@ PrefabInstance:
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
       propertyPath: _mobilitySkillBlueprints.Array.data[1].completionTime
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
@@ -14539,6 +14749,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
+      propertyPath: _attackBlueprints.Array.data[0].skillSteps.Array.data[0].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[0].skillSteps.Array.data[0].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[0].skillSteps.Array.data[1].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[0].skillSteps.Array.data[1].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[0].skillSteps.Array.data[2].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[0].skillSteps.Array.data[2].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
       propertyPath: _attackBlueprints.Array.data[1].SkillSteps.Array.data[0].color.a
       value: 1
       objectReference: {fileID: 0}
@@ -14566,6 +14806,66 @@ PrefabInstance:
         type: 3}
       propertyPath: _attackBlueprints.Array.data[1].SkillSteps.Array.data[2].color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[1].skillSteps.Array.data[0].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[1].skillSteps.Array.data[0].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[1].skillSteps.Array.data[1].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[1].skillSteps.Array.data[1].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[1].skillSteps.Array.data[2].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[1].skillSteps.Array.data[2].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[2].skillSteps.Array.data[0].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[2].skillSteps.Array.data[0].color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[2].skillSteps.Array.data[0].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[2].skillSteps.Array.data[1].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[2].skillSteps.Array.data[1].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _attackBlueprints.Array.data[2].skillSteps.Array.data[1].color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
@@ -14634,8 +14934,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
-      propertyPath: _mobilitySkillBlueprints.Array.data[1].skillSteps.Array.data[1].color.r
+      propertyPath: _mobilitySkillBlueprints.Array.data[1].skillSteps.Array.data[1].color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _mobilitySkillBlueprints.Array.data[1].skillSteps.Array.data[1].color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272546813464177524, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _mobilitySkillBlueprints.Array.data[1].skillSteps.Array.data[1].color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2849435728944204746, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
@@ -14747,6 +15057,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8544383227565332896, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _leftHandAnimator
+      value: 
+      objectReference: {fileID: 760077415}
+    - target: {fileID: 8544383227565332896, guid: 266f8817002197a41b61c96355b8a6c3,
+        type: 3}
+      propertyPath: _rightHandAnimator
+      value: 
+      objectReference: {fileID: 1691806993}
     - target: {fileID: 8853221076184571770, guid: 266f8817002197a41b61c96355b8a6c3,
         type: 3}
       propertyPath: m_Layer

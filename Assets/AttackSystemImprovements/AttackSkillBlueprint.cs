@@ -16,31 +16,34 @@ public class SkillStep
 [System.Serializable]
 public class AttackSkillBlueprint
 {
-    [FormerlySerializedAs("AttackSteps")] public List<SkillStep> SkillSteps;
+    [FormerlySerializedAs("SkillSteps")] public List<SkillStep> skillSteps;
+
+    public string skillId;
 
     public GameObject AttackPrefab;
 
     public AttackSkillBlueprint(List<SkillStep> skillSteps, GameObject attackPrefab)
     {
-        SkillSteps = skillSteps;
+        this.skillSteps = skillSteps;
         AttackPrefab = attackPrefab;
+        skillId = PlayerSkill.GetSkillId(skillSteps);
     }
 
     public bool CompareTo(AttackSkillBlueprint other)
     {
-        return CompareTo(other.SkillSteps) && other.AttackPrefab == AttackPrefab;
+        return CompareTo(other.skillSteps) && other.AttackPrefab == AttackPrefab;
     }
 
     public bool CompareTo(List<SkillStep> other)
     {
         bool result = false;
 
-        if (this.SkillSteps.Count == other.Count)
+        if (this.skillSteps.Count == other.Count)
         {
             result = true;
-            for (int i = 0; i < this.SkillSteps.Count; i++)
+            for (int i = 0; i < this.skillSteps.Count; i++)
             {
-                if (this.SkillSteps[i].color != other[i].color)
+                if (this.skillSteps[i].color != other[i].color)
                 {
                     result = false;
                     break;
