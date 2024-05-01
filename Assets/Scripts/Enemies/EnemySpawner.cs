@@ -7,12 +7,15 @@ public class EnemySpawner : MonoBehaviour
 {
     public Transform Player;
     public int NumberOfEnemiesToSpawn = 5;
-    public float SpawnDelay = 1f;
+    public float MinSpawnDelay = 1f; // Minimum spawn delay
+    public float MaxSpawnDelay = 2f; // Maximum spawn delay
     public List<Enemy> EnemyPrefabs = new List<Enemy>();
     public SpawnMethod EnemySpawnMethod = SpawnMethod.RoundRobin;
 
     private NavMeshTriangulation Triangulation;
     private Dictionary<int, ObjectPool> EnemyObjectPools = new Dictionary<int, ObjectPool>();
+
+    private bool canSpawn = true; // Add this variable to control spawning
 
     private void Awake()
     {
@@ -31,24 +34,26 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
-        WaitForSeconds Wait = new WaitForSeconds(SpawnDelay);
-
         int SpawnedEnemies = 0;
 
         while (SpawnedEnemies < NumberOfEnemiesToSpawn)
         {
-            if (EnemySpawnMethod == SpawnMethod.RoundRobin)
+            if (canSpawn) // Check if spawning is allowed
             {
-                SpawnRoundRobinEnemy(SpawnedEnemies);
-            }
-            else if (EnemySpawnMethod == SpawnMethod.Random)
-            {
-                SpawnRandomEnemy();
+                if (EnemySpawnMethod == SpawnMethod.RoundRobin)
+                {
+                    SpawnRoundRobinEnemy(SpawnedEnemies);
+                }
+                else if (EnemySpawnMethod == SpawnMethod.Random)
+                {
+                    SpawnRandomEnemy();
+                }
+
+                SpawnedEnemies++;
             }
 
-            SpawnedEnemies++;
-
-            yield return Wait;
+            float delay = Random.Range(MinSpawnDelay, MaxSpawnDelay); // Random delay between min and max
+            yield return new WaitForSeconds(delay);
         }
     }
 
@@ -66,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void DoSpawnEnemy(int SpawnIndex)
     {
-      
+
         PoolableObject poolableObject = EnemyObjectPools[SpawnIndex].GetObject();
 
         if (poolableObject != null)
@@ -95,6 +100,13 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    // Implement your logic here to decide when monsters can spawn
+    private void CheckSpawnCondition()
+    {
+        // Example condition: Allow spawning only if the player is within a certain distance
+        float distanceToPlayer = Vector3.Distance(transform.position, Player.position);
+        canSpawn = distanceToPlayer < 20f; // Adjust the distance as needed
+    }
 
     public enum SpawnMethod
     {
