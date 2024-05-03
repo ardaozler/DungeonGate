@@ -1,37 +1,32 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(AgentLinkMover))]
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform Player;
-    public float UpdateRate = 0.1f;
-    private NavMeshAgent Agent;
-    private AgentLinkMover LinkMover;
-  //  [SerializeField]
-    // private Animator Animator = null;
+    [FormerlySerializedAs("Player")] public Transform player;
+    [FormerlySerializedAs("UpdateRate")] public float updateRate = 0.1f;
+    private NavMeshAgent _agent;
+    private AgentLinkMover _linkMover;
 
-    private const string IsWalking = "IsWalking";
-    private const string Jump = "Jump";
-    private const string Landed = "Landed";
-
-    private Coroutine FollowCoroutine;
+    private Coroutine _followCoroutine;
 
     private void Awake()
     {
-        Agent = GetComponent<NavMeshAgent>();
-        LinkMover = GetComponent<AgentLinkMover>();
+        _agent = GetComponent<NavMeshAgent>();
+        _linkMover = GetComponent<AgentLinkMover>();
 
-        LinkMover.OnLinkStart += HandleLinkStart;
-        LinkMover.OnLinkEnd += HandleLinkEnd;
+        _linkMover.OnLinkStart += HandleLinkStart;
+        _linkMover.OnLinkEnd += HandleLinkEnd;
     }
 
     public void StartChasing()
     {
-        if (FollowCoroutine == null)
+        if (_followCoroutine == null)
         {
-            FollowCoroutine = StartCoroutine(FollowTarget());
+            _followCoroutine = StartCoroutine(FollowTarget());
         }
         else
         {
@@ -41,11 +36,11 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator FollowTarget()
     {
-        WaitForSeconds Wait = new WaitForSeconds(UpdateRate);
+        WaitForSeconds Wait = new WaitForSeconds(updateRate);
 
         while (gameObject.activeSelf)
         {
-            Agent.SetDestination(Player.transform.position);
+            _agent.SetDestination(player.transform.position);
             yield return Wait;
         }
     }
@@ -58,10 +53,5 @@ public class EnemyMovement : MonoBehaviour
     private void HandleLinkEnd()
     {
        // Animator.SetTrigger(Landed);
-    }
-
-    private void Update()
-    {
-        //Animator.SetBool(IsWalking, Agent.velocity.magnitude > 0.01f);
     }
 }

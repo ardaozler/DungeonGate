@@ -85,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 enemy.Agent.Warp(Hit.position);
 
-                enemy.Movement.Player = Player;
+                enemy.Movement.player = Player;
                 enemy.Agent.enabled = true;
                 enemy.Movement.StartChasing();
             }
@@ -112,6 +112,6 @@ public class EnemySpawner : MonoBehaviour
     {
         RoundRobin,
         Random
-        // Diðer Spawnlamalar
+        // DiÃ°er Spawnlamalar
     }
 }
