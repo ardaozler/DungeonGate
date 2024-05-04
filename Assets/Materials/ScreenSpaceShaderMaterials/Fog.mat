@@ -42,9 +42,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FogEnd: 3.4
+    - _FogEnd: 3
     - _FogMultiplier: 0.01
-    - _FogStart: 1
+    - _FogStart: 1.1
     m_Colors:
     - _Emission: {r: -1.64, g: 1, b: 0, a: 0}
     - _FogColor: {r: 0, g: 0, b: 0, a: 1}
