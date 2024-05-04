@@ -47,5 +47,5 @@ Material:
     - _FogStart: 1.1
     m_Colors:
     - _Emission: {r: -1.64, g: 1, b: 0, a: 0}
-    - _FogColor: {r: 0.16981131, g: 0.0970808, b: 0.0970808, a: 1}
+    - _FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
