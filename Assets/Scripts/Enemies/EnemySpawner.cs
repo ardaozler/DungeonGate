@@ -7,15 +7,12 @@ public class EnemySpawner : MonoBehaviour
 {
     public Transform Player;
     public int NumberOfEnemiesToSpawn = 5;
-    public float MinSpawnDelay = 1f; // Minimum spawn delay
-    public float MaxSpawnDelay = 2f; // Maximum spawn delay
+    public float SpawnDelay = 1f;
     public List<Enemy> EnemyPrefabs = new List<Enemy>();
     public SpawnMethod EnemySpawnMethod = SpawnMethod.RoundRobin;
 
     private NavMeshTriangulation Triangulation;
     private Dictionary<int, ObjectPool> EnemyObjectPools = new Dictionary<int, ObjectPool>();
-
-    private bool canSpawn = true; // Add this variable to control spawning
 
     private void Awake()
     {
@@ -34,26 +31,24 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
+        WaitForSeconds Wait = new WaitForSeconds(SpawnDelay);
+
         int SpawnedEnemies = 0;
 
         while (SpawnedEnemies < NumberOfEnemiesToSpawn)
         {
-            if (canSpawn) // Check if spawning is allowed
+            if (EnemySpawnMethod == SpawnMethod.RoundRobin)
             {
-                if (EnemySpawnMethod == SpawnMethod.RoundRobin)
-                {
-                    SpawnRoundRobinEnemy(SpawnedEnemies);
-                }
-                else if (EnemySpawnMethod == SpawnMethod.Random)
-                {
-                    SpawnRandomEnemy();
-                }
-
-                SpawnedEnemies++;
+                SpawnRoundRobinEnemy(SpawnedEnemies);
+            }
+            else if (EnemySpawnMethod == SpawnMethod.Random)
+            {
+                SpawnRandomEnemy();
             }
 
-            float delay = Random.Range(MinSpawnDelay, MaxSpawnDelay); // Random delay between min and max
-            yield return new WaitForSeconds(delay);
+            SpawnedEnemies++;
+
+            yield return Wait;
         }
     }
 
@@ -71,7 +66,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void DoSpawnEnemy(int SpawnIndex)
     {
-
         PoolableObject poolableObject = EnemyObjectPools[SpawnIndex].GetObject();
 
         if (poolableObject != null)
@@ -84,8 +78,8 @@ public class EnemySpawner : MonoBehaviour
             if (NavMesh.SamplePosition(Triangulation.vertices[VertexIndex], out Hit, 2f, -1))
             {
                 enemy.Agent.Warp(Hit.position);
-
-                enemy.Movement.player = Player;
+                // enemy needs to get enabled and start chasing now.
+                enemy.Movement.Player = Player;
                 enemy.Agent.enabled = true;
                 enemy.Movement.StartChasing();
             }
@@ -100,18 +94,11 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    // Implement your logic here to decide when monsters can spawn
-    private void CheckSpawnCondition()
-    {
-        // Example condition: Allow spawning only if the player is within a certain distance
-        float distanceToPlayer = Vector3.Distance(transform.position, Player.position);
-        canSpawn = distanceToPlayer < 20f; // Adjust the distance as needed
-    }
 
     public enum SpawnMethod
     {
         RoundRobin,
         Random
-        // Diðer Spawnlamalar
+        // Other spawn methods can be added here
     }
 }

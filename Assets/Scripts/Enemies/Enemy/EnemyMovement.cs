@@ -1,32 +1,37 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(AgentLinkMover))]
 public class EnemyMovement : MonoBehaviour
 {
-    [FormerlySerializedAs("Player")] public Transform player;
-    [FormerlySerializedAs("UpdateRate")] public float updateRate = 0.1f;
-    private NavMeshAgent _agent;
-    private AgentLinkMover _linkMover;
+    public Transform Player;
+    public float UpdateRate = 0.1f;
+    private NavMeshAgent Agent;
+    private AgentLinkMover LinkMover;
+    [SerializeField]
+    private Animator Animator = null;
 
-    private Coroutine _followCoroutine;
+    private const string IsWalking = "IsWalking";
+    private const string Jump = "Jump";
+    private const string Landed = "Landed";
+
+    private Coroutine FollowCoroutine;
 
     private void Awake()
     {
-        _agent = GetComponent<NavMeshAgent>();
-        _linkMover = GetComponent<AgentLinkMover>();
+        Agent = GetComponent<NavMeshAgent>();
+        LinkMover = GetComponent<AgentLinkMover>();
 
-        _linkMover.OnLinkStart += HandleLinkStart;
-        _linkMover.OnLinkEnd += HandleLinkEnd;
+        LinkMover.OnLinkStart += HandleLinkStart;
+        LinkMover.OnLinkEnd += HandleLinkEnd;
     }
 
     public void StartChasing()
     {
-        if (_followCoroutine == null)
+        if (FollowCoroutine == null)
         {
-            _followCoroutine = StartCoroutine(FollowTarget());
+            FollowCoroutine = StartCoroutine(FollowTarget());
         }
         else
         {
@@ -36,22 +41,27 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator FollowTarget()
     {
-        WaitForSeconds Wait = new WaitForSeconds(updateRate);
+        WaitForSeconds Wait = new WaitForSeconds(UpdateRate);
 
         while (gameObject.activeSelf)
         {
-            _agent.SetDestination(player.transform.position);
+            Agent.SetDestination(Player.transform.position);
             yield return Wait;
         }
     }
 
     private void HandleLinkStart()
     {
-     //   Animator.SetTrigger(Jump);
+        Animator.SetTrigger(Jump);
     }
 
     private void HandleLinkEnd()
     {
-       // Animator.SetTrigger(Landed);
+        Animator.SetTrigger(Landed);
+    }
+
+    private void Update()
+    {
+        Animator.SetBool(IsWalking, Agent.velocity.magnitude > 0.01f);
     }
 }

@@ -218,10 +218,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1386685503775888333, guid: 9fdab3f8a4f5e7f40b8bd4829d37eaf7,
+        type: 3}
+      propertyPath: EnemyScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a896513f0577764589675bc8b105faf,
+        type: 2}
     - target: {fileID: 5659892230899633168, guid: 9fdab3f8a4f5e7f40b8bd4829d37eaf7,
         type: 3}
       propertyPath: m_Name
-      value: Enemy Cube variant
+      value: Enemy Cube Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7746924544527557492, guid: 9fdab3f8a4f5e7f40b8bd4829d37eaf7,
         type: 3}
