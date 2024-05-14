@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent Agent;
     private AgentLinkMover LinkMover;
     [SerializeField]
-    private Animator Animator = null;
+   
 
     private const string IsWalking = "IsWalking";
     private const string Jump = "Jump";
@@ -23,8 +23,6 @@ public class EnemyMovement : MonoBehaviour
         Agent = GetComponent<NavMeshAgent>();
         LinkMover = GetComponent<AgentLinkMover>();
 
-        LinkMover.OnLinkStart += HandleLinkStart;
-        LinkMover.OnLinkEnd += HandleLinkEnd;
     }
 
     public void StartChasing()
@@ -50,18 +48,5 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void HandleLinkStart()
-    {
-        Animator.SetTrigger(Jump);
-    }
-
-    private void HandleLinkEnd()
-    {
-        Animator.SetTrigger(Landed);
-    }
-
-    private void Update()
-    {
-        Animator.SetBool(IsWalking, Agent.velocity.magnitude > 0.01f);
-    }
+  
 }

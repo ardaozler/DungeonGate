@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8816651874913689210}
   - component: {fileID: 2196692270258202972}
   - component: {fileID: 1386685503775888333}
+  - component: {fileID: 8772193346371236600}
   m_Layer: 0
   m_Name: Enemy Cube
   m_TagString: Untagged
@@ -149,7 +150,7 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 10
+  m_Speed: 15
   m_Acceleration: 80
   avoidancePriority: 50
   m_AngularSpeed: 300
@@ -213,7 +214,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   UpdateRate: 0.1
-  Animator: {fileID: 0}
 --- !u!114 &1386685503775888333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,9 +228,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movement: {fileID: 2196692270258202972}
   Agent: {fileID: 7219959946811539786}
-  EnemyScriptableObject: {fileID: 11400000, guid: 5a896513f0577764589675bc8b105faf,
-    type: 2}
-  Health: 100
+--- !u!114 &8772193346371236600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5659892230899633168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2ece85843fb0f489354853bf42ac8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  attack: 5
 --- !u!1001 &5130602889742702585
 PrefabInstance:
   m_ObjectHideFlags: 0

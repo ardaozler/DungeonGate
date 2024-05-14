@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _lastDownwardVelocity = new Vector2(0f, 0f);
 
     private bool _isGrounded;
-    private bool _isMoving;
+   
 
     private Vector3 _movementInput;
 
@@ -69,16 +69,7 @@ public class PlayerMovement : MonoBehaviour
         _controller.Move(move * (speed * Time.deltaTime));
 
 
-        if (_lastPosition != gameObject.transform.position && _isGrounded)
-        {
-            _isMoving = true;
-        }
-        else
-        {
-            _isMoving = false;
-        }
-
-        _lastPosition = gameObject.transform.position;
+     
     }
 
     private void HandleTimers()
